@@ -13,11 +13,21 @@ public class Client {
     public void sendFile(SocketChannel socketChannel, File file) {
         RandomAccessFile aFile = null;
         try {
-
+            // System.out.println("File Size " + file.length());
+            long FileSizeinBytes = file.length();
+            long CurrentProgress = 0;
             aFile = new RandomAccessFile(file, "r");
             FileChannel inChannel = aFile.getChannel();
             ByteBuffer buffer = ByteBuffer.allocate(1024);
-            while (inChannel.read(buffer) != -1) {
+            int sent = 0;
+            while (sent != -1) {
+                sent = inChannel.read(buffer);
+                if (sent != -1) {
+                    CurrentProgress += sent;
+                    double val = ((double) CurrentProgress / (double) FileSizeinBytes) * 100;
+                    int temp = (int) Math.ceil(val);
+                    ClientGUI.progressBar.setValue(temp);
+                }
                 buffer.flip();
                 socketChannel.write(buffer);
                 buffer.clear();

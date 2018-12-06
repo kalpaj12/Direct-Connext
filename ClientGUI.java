@@ -28,7 +28,7 @@ public class ClientGUI extends JFrame {
 
     JFileChooser fileChooser;
 
-    JProgressBar progressBar;
+    static JProgressBar progressBar;
 
     Insets defaultInsets;
 
