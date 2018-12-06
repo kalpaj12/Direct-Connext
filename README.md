@@ -1,2 +1,6 @@
 # Direct-Connext
-Similar to DC++, with chat integration, written in JAVA
+Similar to DC++ written in JAVA
+
+Change "localhost" to serverip in client-side
+Compile with javac *.java
+run ServerGUI and ClientGUI.
