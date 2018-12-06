@@ -23,7 +23,7 @@ public class Server {
     public void readFileFromSocket(SocketChannel socketChannel, String fullPath) {
         RandomAccessFile aFile = null;
         try {
-            System.out.println(fullPath);
+            // System.out.println(fullPath);
             aFile = new RandomAccessFile(fullPath, "rw");
 
             ByteBuffer buffer = ByteBuffer.allocate(1024);
@@ -89,6 +89,12 @@ public class Server {
                 }
 
                 nioServer.readFileFromSocket(socketChannel, fullPath);
+
+                System.out.println("\n------------------------------");
+                System.out.println("Files in Server");
+                FilesofDirec FilesofDirec = new FilesofDirec();
+                FilesofDirec.listFiles(storagePath);
+                System.out.println("------------------------------\n");
 
                 serverSocketChannel.close();
 

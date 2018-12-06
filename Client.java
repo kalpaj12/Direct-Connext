@@ -24,7 +24,7 @@ public class Client {
             }
 
             aFile.close();
-            System.out.println("File Uploaded!");
+            System.out.println(file.getName() + " Uploaded!");
 
         } catch (Throwable e) {
             System.err.println("From sendFile" + e);
@@ -44,7 +44,7 @@ public class Client {
 
             FileNamebuffer.clear();
 
-            System.out.println("File Name Sent " + fileName);
+            // System.out.println("File Name Sent " + fileName);
 
         } catch (Throwable e) {
             System.err.println("From sendFile" + e);
@@ -75,6 +75,12 @@ public class Client {
         String fileName = file.getName();
 
         nioClient.sendFileName(socketChannel, fileName);
+
+        try {
+            Thread.sleep(25);
+        } catch (InterruptedException x) {
+
+        }
 
         nioClient.sendFile(socketChannel, file);
         socketChannel.close();
