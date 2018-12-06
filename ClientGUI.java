@@ -118,6 +118,7 @@ public class ClientGUI extends JFrame {
         Thread t = new Thread() {
             public void run() {
                 try {
+                    progressBar.setValue(0);
                     Client.send(file);
                     progressBar.setValue(100);
                 } catch (IOException ioe) {
