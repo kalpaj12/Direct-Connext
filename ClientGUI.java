@@ -14,7 +14,6 @@ public class ClientGUI extends JFrame {
     public int ProgressINT;
     String directory;
     File file;
-    Percentage perc;
 
     JScrollPane scrollPane;
     JList fileList;
@@ -109,6 +108,10 @@ public class ClientGUI extends JFrame {
         pack();
         setLocationRelativeTo(null);
 
+        progressBar.setMinimum(0);
+        progressBar.setMaximum(100);
+        startButton.setEnabled(true);
+
     }
 
     private void startButtonActionPerformed(ActionEvent e) {
@@ -116,6 +119,7 @@ public class ClientGUI extends JFrame {
             public void run() {
                 try {
                     Client.send(file);
+                    progressBar.setValue(100);
                 } catch (IOException ioe) {
                     System.out.println("Exception at upload.");
                 }
@@ -130,10 +134,7 @@ public class ClientGUI extends JFrame {
         if (result == JFileChooser.APPROVE_OPTION) {
             file = fileChooser.getSelectedFile();
             pathTextField.setText(file.toString());
-            progressBar.setMinimum(0);
-            progressBar.setMaximum(100);
-            startButton.setEnabled(true);
-
+            progressBar.setValue(0);
         }
     }
 

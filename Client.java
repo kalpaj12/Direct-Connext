@@ -57,13 +57,7 @@ public class Client {
         SocketChannel socketChannel = null;
         Client nioClient = new Client();
 
-        // BufferedInputStream inputStream = null;
-        // OutputStream outputStream = null;
-
         try {
-
-            // String fileName = file.getName();
-            // long fileSize = file.length();
 
             socketChannel = SocketChannel.open();
             SocketAddress socketAddress = new InetSocketAddress(ServerIP, PORT);
