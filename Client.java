@@ -9,6 +9,7 @@ public class Client {
     public static final int PACKET_SIZE = 128;
     public static final int PORT = 8008;
     public static final String ServerIP = "localhost";
+    public static boolean ServerFound;
 
     public void sendFile(SocketChannel socketChannel, File file) {
         RandomAccessFile aFile = null;
@@ -37,7 +38,7 @@ public class Client {
             System.out.println(file.getName() + " Uploaded!");
 
         } catch (Throwable e) {
-            System.err.println("From sendFile" + e);
+
         }
 
     }
@@ -57,7 +58,8 @@ public class Client {
             // System.out.println("File Name Sent " + fileName);
 
         } catch (Throwable e) {
-            System.err.println("From sendFile" + e);
+            System.err.println("--Server Not Found--");
+            ServerFound = false;
         }
 
     }
@@ -66,7 +68,7 @@ public class Client {
 
         SocketChannel socketChannel = null;
         Client nioClient = new Client();
-
+        ServerFound = true;
         try {
 
             socketChannel = SocketChannel.open();
@@ -85,8 +87,9 @@ public class Client {
         } catch (InterruptedException x) {
 
         }
-
-        nioClient.sendFile(socketChannel, file);
+        if (ServerFound) {
+            nioClient.sendFile(socketChannel, file);
+        }
         socketChannel.close();
 
     }

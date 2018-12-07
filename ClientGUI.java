@@ -73,7 +73,6 @@ public class ClientGUI extends JFrame {
 
         startButton.addActionListener(e -> startButtonActionPerformed(e));
         pathButton.addActionListener(e -> pathButtonActionPerformed(e));
-        suspendButton.addActionListener(e -> suspendButtonActionPerformed(e));
 
         Container contents = this.getContentPane();
         contents.setLayout(new GridBagLayout());
@@ -122,7 +121,6 @@ public class ClientGUI extends JFrame {
                     if (file != null) {
                         progressBar.setValue(0);
                         Client.send(file);
-                        progressBar.setValue(100);
                     } else {
                         System.out.println("File not Selected");
                     }
@@ -142,10 +140,6 @@ public class ClientGUI extends JFrame {
             pathTextField.setText(file.toString());
             progressBar.setValue(0);
         }
-    }
-
-    private void suspendButtonActionPerformed(ActionEvent e) {
-
     }
 
     private void initialize() {
