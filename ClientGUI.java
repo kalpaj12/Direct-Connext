@@ -110,6 +110,7 @@ public class ClientGUI extends JFrame {
 
         progressBar.setMinimum(0);
         progressBar.setMaximum(100);
+        progressBar.setStringPainted(true);
         startButton.setEnabled(true);
 
     }
@@ -118,9 +119,13 @@ public class ClientGUI extends JFrame {
         Thread t = new Thread() {
             public void run() {
                 try {
-                    progressBar.setValue(0);
-                    Client.send(file);
-                    progressBar.setValue(100);
+                    if (file != null) {
+                        progressBar.setValue(0);
+                        Client.send(file);
+                        progressBar.setValue(100);
+                    } else {
+                        System.out.println("File not Selected");
+                    }
                 } catch (IOException ioe) {
                     System.out.println("Exception at upload.");
                 }
