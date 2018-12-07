@@ -14,12 +14,11 @@ public class Client {
     public void sendFile(SocketChannel socketChannel, File file) {
         RandomAccessFile aFile = null;
         try {
-            // System.out.println("File Size " + file.length());
             long FileSizeinBytes = file.length();
             long CurrentProgress = 0;
             aFile = new RandomAccessFile(file, "r");
             FileChannel inChannel = aFile.getChannel();
-            ByteBuffer buffer = ByteBuffer.allocate(1024);
+            ByteBuffer buffer = ByteBuffer.allocate(2048);
             int sent = 0;
             while (sent != -1) {
                 sent = inChannel.read(buffer);
