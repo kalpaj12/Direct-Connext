@@ -11,6 +11,7 @@ import java.io.File;
 import javax.swing.*;
 import java.util.Calendar;
 import java.text.DecimalFormat;
+import java.net.*;
 
 public class ServerGUI extends JFrame {
     private static final long serialVersionUID = 1L;
@@ -155,6 +156,17 @@ public class ServerGUI extends JFrame {
         serverPanelConstraints.gridx = 1;
         serverPanelConstraints.anchor = GridBagConstraints.EAST;
         serverPanel.add(startedTextField, serverPanelConstraints);
+
+        InetAddress ip;
+        String hostname = null;
+        try {
+            ip = InetAddress.getLocalHost();
+            hostname = ip.getHostAddress();
+        } catch (UnknownHostException e) {
+
+        }
+
+        System.out.println("Server IP:" + hostname);
 
         gridConstraints.gridy = y++;
         contents.add(buttonPanel, gridConstraints);
