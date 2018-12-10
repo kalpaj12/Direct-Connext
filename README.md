@@ -5,8 +5,8 @@ This is an application similar to DC++ (A file sharing aid over intranet).
 The whole of source code is written purely in JAVA.
 
 
-#Procedure
-1) Copy Serverfiles a computer and Clientfiles to another. 
+# Procedure
+1) Copy Serverfiles on a computer and Clientfiles to another. 
 
 
 2) In ClientGUI, change the IP from "localhost" to the ip address of the server computer. (ipconfig in Windows, ifconfig in linux)
@@ -15,7 +15,7 @@ The whole of source code is written purely in JAVA.
 3) Compile the given source codes using the command javac *.java on both the computers.
 
 
-4) Ignore -Xlint requesst while compiling
+4) Ignore -Xlint request while compiling.
 
 
 5) Run the ServerGUI on the serverside, and ClientGUI on the client side.
@@ -24,7 +24,7 @@ The whole of source code is written purely in JAVA.
 6) The remaining steps are self-explanatory.
 
 
-#Purpose
+# Purpose
 
 
 1) I-ON connects every hostel block in MUJ, this provides an efficient yet easy way to share files over the internet.
