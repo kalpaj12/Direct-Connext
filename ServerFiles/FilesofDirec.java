@@ -22,6 +22,7 @@ public class FilesofDirec {
         for (File file : fList) {
             if (file.isFile() && file.getName().compareToIgnoreCase("FilesinServer.txt") != 0) {
                 WritetoFile.println(file.getName());
+                new Database_layer(file.getName());
             } else if (file.isDirectory()) {
                 WritetoFile.println(file.getAbsolutePath());
             }
