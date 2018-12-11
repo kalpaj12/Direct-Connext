@@ -16,4 +16,9 @@ ServerFiles/apache-tomcat-9.0.13/NOTICE
 ServerFiles/apache-tomcat-9.0.13/README.md
 ServerFiles/apache-tomcat-9.0.13/RELEASE-NOTES
 ServerFiles/apache-tomcat-9.0.13/RUNNING.txt
+ServerFiles/apache-tomcat-9.0.13/webapps/ROOT/
+ServerFiles/apache-tomcat-9.0.13/webapps/docs/
+ServerFiles/apache-tomcat-9.0.13/webapps/examples/
+ServerFiles/apache-tomcat-9.0.13/webapps/host-manager/
+ServerFiles/apache-tomcat-9.0.13/webapps/manager/
 TestStorage/
