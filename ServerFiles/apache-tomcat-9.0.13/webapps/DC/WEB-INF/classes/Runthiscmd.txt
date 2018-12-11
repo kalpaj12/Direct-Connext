@@ -1,0 +1,1 @@
+javac -cp .;"C:\Users\Kalpaj's PC\Desktop\Direct-Connext\ServerFiles\apache-tomcat-9.0.13\lib\servlet-api.jar" ..\src\server\Main.java -d .

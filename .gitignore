@@ -3,3 +3,17 @@ CrunchifyGetIPHostname.java
 To_Do.txt
 ClientDownload.java
 gitcmds.txt
+ServerFiles/apache-tomcat-9.0.13/bin
+ServerFiles/apache-tomcat-9.0.13/conf
+ServerFiles/apache-tomcat-9.0.13/lib
+ServerFiles/apache-tomcat-9.0.13/logs
+ServerFiles/apache-tomcat-9.0.13/temp
+ServerFiles/apache-tomcat-9.0.13/work
+ServerFiles/apache-tomcat-9.0.13/BUILDING.txt
+ServerFiles/apache-tomcat-9.0.13/CONTRIBUTING.md
+ServerFiles/apache-tomcat-9.0.13/LICENSE
+ServerFiles/apache-tomcat-9.0.13/NOTICE
+ServerFiles/apache-tomcat-9.0.13/README.md
+ServerFiles/apache-tomcat-9.0.13/RELEASE-NOTES
+ServerFiles/apache-tomcat-9.0.13/RUNNING.txt
+TestStorage/
