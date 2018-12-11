@@ -90,11 +90,14 @@ public class Server {
 
                 nioServer.readFileFromSocket(socketChannel, fullPath);
 
-                System.out.println("\n------------------------------");
-                System.out.println("Files in Server");
-                FilesofDirec FilesofDirec = new FilesofDirec();
-                FilesofDirec.listFiles(storagePath);
-                System.out.println("------------------------------\n");
+                // System.out.println("\n------------------------------");
+                // System.out.println("Files in Server");
+                try {
+                    FilesofDirec FilesofDirec = new FilesofDirec();
+                    FilesofDirec.listFilesAndFilesSubDirectories(storagePath);
+                } catch (IOException e) {
+                }
+                // System.out.println("------------------------------\n");
 
                 serverSocketChannel.close();
 

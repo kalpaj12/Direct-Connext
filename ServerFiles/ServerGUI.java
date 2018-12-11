@@ -242,7 +242,9 @@ public class ServerGUI extends JFrame {
     private void updateFileList() {
         listModel.clear();
         for (File file : directory.listFiles()) {
-            listModel.addElement(file.getName());
+            String FileName = file.getName();
+            if (FileName.compareToIgnoreCase("FilesinServer.txt") != 0)
+                listModel.addElement(file.getName());
         }
         fileList.setModel(listModel);
     }
