@@ -16,30 +16,57 @@ public class Server {
     static Socket socket;
     static String storagePath;
     static boolean closeServer = false;
+    static boolean bFoundinServer = false;
 
     static BufferedInputStream inputStream;
     static FileOutputStream outputStream;
 
+    public String Slash_type() {
+        String operSys = System.getProperty("os.name").toLowerCase();
+
+        if (operSys.startsWith("windows")) {
+            return "\\";
+        } else {
+            return "/";
+        }
+    }
+
+    public String filename(String fullpath) {
+        String temp = Slash_type();
+        int lastindexof_Slash = fullpath.lastIndexOf(temp);
+        String Filename = fullpath.substring(lastindexof_Slash + 1, fullpath.length());
+        // System.out.println("Filename from method is:" + Filename);
+        return Filename;
+    }
+
     public void readFileFromSocket(SocketChannel socketChannel, String fullPath) {
         RandomAccessFile aFile = null;
-        try {
-            // System.out.println(fullPath);
-            aFile = new RandomAccessFile(fullPath, "rw");
 
-            ByteBuffer buffer = ByteBuffer.allocate(1024);
-            FileChannel fileChannel = aFile.getChannel();
-            while (socketChannel.read(buffer) != -1) {
-                buffer.flip();
-                fileChannel.write(buffer);
-                buffer.clear();
+        Database_layer db = new Database_layer();
+        if (!db.FoundinServer(filename(fullPath))) {
+            try {
+                // System.out.println(fullPath);
+                aFile = new RandomAccessFile(fullPath, "rw");
+
+                ByteBuffer buffer = ByteBuffer.allocate(1024);
+                FileChannel fileChannel = aFile.getChannel();
+                while (socketChannel.read(buffer) != -1) {
+                    buffer.flip();
+                    fileChannel.write(buffer);
+                    buffer.clear();
+                }
+
+                fileChannel.close();
+
+                System.out.println("File Recieved");
+                bFoundinServer = false;
+
+            } catch (Throwable e) {
+                System.err.println("File Transfer: " + e);
             }
-
-            fileChannel.close();
-
-            System.out.println("File Recieved");
-
-        } catch (Throwable e) {
-            System.err.println("File Transfer: " + e);
+        } else {
+            System.out.println("File already exist in the database");
+            bFoundinServer = true;
         }
 
     }
@@ -92,10 +119,12 @@ public class Server {
 
                 // System.out.println("\n------------------------------");
                 // System.out.println("Files in Server");
-                try {
-                    FilesofDirec FilesofDirec = new FilesofDirec();
-                    FilesofDirec.listFilesAndFilesSubDirectories(storagePath);
-                } catch (IOException e) {
+                if (!bFoundinServer) {
+                    try {
+                        FilesofDirec FilesofDirec = new FilesofDirec();
+                        FilesofDirec.listFilesAndFilesSubDirectories(storagePath);
+                    } catch (IOException e) {
+                    }
                 }
                 // System.out.println("------------------------------\n");
 
