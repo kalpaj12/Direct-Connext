@@ -48,7 +48,7 @@ public class Server {
                 // System.out.println(fullPath);
                 aFile = new RandomAccessFile(fullPath, "rw");
 
-                ByteBuffer buffer = ByteBuffer.allocate(1024);
+                ByteBuffer buffer = ByteBuffer.allocate(2048);
                 FileChannel fileChannel = aFile.getChannel();
                 while (socketChannel.read(buffer) != -1) {
                     buffer.flip();

@@ -12,6 +12,9 @@ import javax.swing.*;
 import java.util.Calendar;
 import java.text.DecimalFormat;
 import java.net.*;
+import java.awt.Desktop.*;
+import java.awt.Image.*;
+import java.awt.*;
 
 public class ServerGUI extends JFrame {
     private static final long serialVersionUID = 1L;
@@ -52,6 +55,7 @@ public class ServerGUI extends JFrame {
     Insets defaultInsets;
     DecimalFormat defaultDecimalFormat;
 
+    Image Icon = Toolkit.getDefaultToolkit().getImage("Untitled.png");
     public static void main(String[] args) {
         ServerGUI serverGUI = new ServerGUI();
         serverGUI.setVisible(true);
@@ -183,6 +187,7 @@ public class ServerGUI extends JFrame {
         buttonPanel.add(pathButton, buttonPanelConstraints);
 
         setTitle("ServerGUI Application");
+        setIconImage(Icon);
 
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

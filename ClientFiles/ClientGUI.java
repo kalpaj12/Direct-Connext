@@ -7,6 +7,10 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.*;
+import java.awt.Desktop.*;
+import java.awt.Image.*;
+import java.awt.*;
+
 
 public class ClientGUI extends JFrame {
 
@@ -31,6 +35,7 @@ public class ClientGUI extends JFrame {
     static JProgressBar progressBar;
 
     Insets defaultInsets;
+    Image Icon = Toolkit.getDefaultToolkit().getImage("Untitled.png");
 
     public static void main(String[] args) {
         ClientGUI clientGUI = new ClientGUI();
@@ -101,6 +106,7 @@ public class ClientGUI extends JFrame {
         buttonPanel.add(pathButton, buttonPanelConstraints);
 
         setTitle("ClientGUI Application");
+        setIconImage(Icon);
 
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
