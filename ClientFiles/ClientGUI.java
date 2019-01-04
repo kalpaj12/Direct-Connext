@@ -116,7 +116,7 @@ public class ClientGUI extends JFrame {
         progressBar.setMinimum(0);
         progressBar.setMaximum(100);
         progressBar.setStringPainted(true);
-        startButton.setEnabled(true);
+        startButton.setEnabled(false);
 
     }
 
@@ -145,7 +145,8 @@ public class ClientGUI extends JFrame {
             file = fileChooser.getSelectedFile();
             pathTextField.setText(file.toString());
             progressBar.setValue(0);
-        }
+        	startButton.setEnabled(true);
+		}
     }
 
     private void initialize() {
