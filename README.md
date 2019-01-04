@@ -9,7 +9,7 @@ The whole of source code is written purely in JAVA.
 1) Copy Serverfiles on a computer and Clientfiles to another. 
 
 
-2) In ClientGUI, change the IP from "localhost" to the ip address of the server computer. (ipconfig in Windows, ifconfig in linux)
+2) In Client.java, change the IP from "localhost" to the ip address of the server computer. (ipconfig in Windows, ifconfig in linux)
 
 
 3) Compile the given source codes using the command javac *.java on both the computers.
