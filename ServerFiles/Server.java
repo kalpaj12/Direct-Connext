@@ -12,6 +12,7 @@ public class Server {
     public static final int PORT = 8008;
     public static final int INTEGER_SIZE = 4;
     public static final int LONG_SIZE = 8;
+    public static boolean UploadComplete;
 
     static Socket socket;
     static String storagePath;
@@ -60,12 +61,19 @@ public class Server {
 
                 System.out.println("File Recieved");
                 bFoundinServer = false;
+                UploadComplete = true;
 
             } catch (Throwable e) {
                 System.err.println("File Transfer: " + e);
+                UploadComplete = false;
+            }
+            try {
+                aFile.close();
+            } catch (IOException ioe) {
+                System.out.println("File close error");
             }
         } else {
-            System.out.println("File already exist in the database");
+            System.out.println("FileName already exist in the database");
             bFoundinServer = true;
         }
 
@@ -119,14 +127,23 @@ public class Server {
 
                 // System.out.println("\n------------------------------");
                 // System.out.println("Files in Server");
-                if (!bFoundinServer) {
+                if (!bFoundinServer && UploadComplete) {
                     try {
                         FilesofDirec FilesofDirec = new FilesofDirec();
                         FilesofDirec.listFilesAndFilesSubDirectories(storagePath);
                     } catch (IOException e) {
                     }
                 }
-                // System.out.println("------------------------------\n");
+
+                if (!UploadComplete) {
+                    File filedelete = new File(fullPath);
+                    System.out.println(fullPath);
+                    if (filedelete.delete()) {
+                        System.out.println("File deleted successfully");
+                    } else {
+                        System.out.println("Failed to delete the file");
+                    }
+                }
 
                 serverSocketChannel.close();
 

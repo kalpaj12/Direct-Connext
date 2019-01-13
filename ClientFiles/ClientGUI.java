@@ -7,10 +7,7 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.*;
-import java.awt.Desktop.*;
-import java.awt.Image.*;
 import java.awt.*;
-
 
 public class ClientGUI extends JFrame {
 
@@ -145,8 +142,8 @@ public class ClientGUI extends JFrame {
             file = fileChooser.getSelectedFile();
             pathTextField.setText(file.toString());
             progressBar.setValue(0);
-        	startButton.setEnabled(true);
-		}
+            startButton.setEnabled(true);
+        }
     }
 
     private void initialize() {

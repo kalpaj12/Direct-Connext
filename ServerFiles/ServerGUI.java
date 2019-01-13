@@ -56,6 +56,7 @@ public class ServerGUI extends JFrame {
     DecimalFormat defaultDecimalFormat;
 
     Image Icon = Toolkit.getDefaultToolkit().getImage("Untitled.png");
+
     public static void main(String[] args) {
         ServerGUI serverGUI = new ServerGUI();
         serverGUI.setVisible(true);
