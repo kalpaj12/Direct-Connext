@@ -17,7 +17,6 @@ public class Server {
     static Socket socket;
     static String storagePath;
     static boolean closeServer = false;
-    static boolean bFoundinServer = false;
 
     static BufferedInputStream inputStream;
     static FileOutputStream outputStream;
@@ -60,7 +59,7 @@ public class Server {
                 fileChannel.close();
 
                 System.out.println("File Recieved");
-                bFoundinServer = false;
+
                 UploadComplete = true;
 
             } catch (Throwable e) {
@@ -72,9 +71,9 @@ public class Server {
             } catch (IOException ioe) {
                 System.out.println("File close error");
             }
+            new Database_layer(filename(fullPath));
         } else {
             System.out.println("FileName already exist in the database");
-            bFoundinServer = true;
         }
 
     }
@@ -127,10 +126,11 @@ public class Server {
 
                 // System.out.println("\n------------------------------");
                 // System.out.println("Files in Server");
-                if (!bFoundinServer && UploadComplete) {
+                if (UploadComplete) {
                     try {
                         FilesofDirec FilesofDirec = new FilesofDirec();
                         FilesofDirec.listFilesAndFilesSubDirectories(storagePath);
+
                     } catch (IOException e) {
                     }
                 }
