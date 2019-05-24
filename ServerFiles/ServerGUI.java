@@ -9,12 +9,15 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.io.File;
 import javax.swing.*;
+import javax.swing.Timer;
 import java.util.Calendar;
 import java.text.DecimalFormat;
 import java.net.*;
 import java.awt.Desktop.*;
 import java.awt.Image.*;
 import java.awt.*;
+import java.io.*;
+import java.util.*;
 
 public class ServerGUI extends JFrame {
     private static final long serialVersionUID = 1L;
@@ -171,7 +174,22 @@ public class ServerGUI extends JFrame {
 
         }
 
-        System.out.println("Server IP:" + hostname);
+        // System.out.println("Server IP:" + hostname);
+        try {
+            Enumeration<NetworkInterface> E_nets = NetworkInterface.getNetworkInterfaces();
+            for (NetworkInterface netint : Collections.list(E_nets)) {
+                Enumeration<InetAddress> inetAddresses = netint.getInetAddresses();
+                for (InetAddress inetAddress : Collections.list(inetAddresses)) {
+                    if (!inetAddress.isLoopbackAddress()) {
+                        System.out.printf("Driver name: %s\n", netint.getDisplayName());
+                        System.out.printf("Address: %s\n", inetAddress.getHostAddress());
+                    }
+                }
+                System.out.printf("\n");
+            }
+        } catch (SocketException se) {
+
+        }
 
         gridConstraints.gridy = y++;
         contents.add(buttonPanel, gridConstraints);
