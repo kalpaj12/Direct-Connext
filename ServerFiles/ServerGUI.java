@@ -174,21 +174,24 @@ public class ServerGUI extends JFrame {
 
         }
 
-        // System.out.println("Server IP:" + hostname);
-        try {
-            Enumeration<NetworkInterface> E_nets = NetworkInterface.getNetworkInterfaces();
-            for (NetworkInterface netint : Collections.list(E_nets)) {
-                Enumeration<InetAddress> inetAddresses = netint.getInetAddresses();
-                for (InetAddress inetAddress : Collections.list(inetAddresses)) {
-                    if (!inetAddress.isLoopbackAddress()) {
-                        System.out.printf("Driver name: %s\n", netint.getDisplayName());
-                        System.out.printf("Address: %s\n", inetAddress.getHostAddress());
+        String operSys = System.getProperty("os.name").toLowerCase();
+        if (operSys.startsWith("windows")) {
+            System.out.println("Server IP:" + hostname);
+        } else {
+            try {
+                Enumeration<NetworkInterface> E_nets = NetworkInterface.getNetworkInterfaces();
+                for (NetworkInterface netint : Collections.list(E_nets)) {
+                    Enumeration<InetAddress> inetAddresses = netint.getInetAddresses();
+                    for (InetAddress inetAddress : Collections.list(inetAddresses)) {
+                        if (!inetAddress.isLoopbackAddress()) {
+                            System.out.printf("Driver name: %s\n", netint.getDisplayName());
+                            System.out.printf("Address: %s\n", inetAddress.getHostAddress());
+                        }
                     }
                 }
-                System.out.printf("\n");
-            }
-        } catch (SocketException se) {
+            } catch (SocketException se) {
 
+            }
         }
 
         gridConstraints.gridy = y++;
